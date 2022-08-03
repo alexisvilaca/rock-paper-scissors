@@ -1,0 +1,227 @@
+:root {
+    --clr-primary: #AFE38A;
+    --clr-background: #EFF8E9;
+    --clr-win-green: #73C71F;
+    --clr-lose-red: #DE3131;
+    --clr-black: #000000;
+    --clr-white: #ffffff;
+    --padding: 1.5rem;
+    --animation-speed: 100ms;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--clr-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 780px;
+    margin: 1.5rem;
+}
+
+.scoreboard-container {
+    padding: var(--padding);
+    background-color: var(--clr-white);
+    border: 3px solid var(--clr-black);
+    border-radius: 1.25rem;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    padding-bottom: var(--padding);
+    position: relative;
+}
+
+.player-score, .computer-score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 100%;
+    gap: 1rem;
+}
+
+.computer-score {
+    flex-direction: row-reverse;
+}
+
+.score-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0.625rem;
+    background-color: var(--clr-primary);
+}
+
+.results {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    padding-top: var(--padding);
+    border-top: 3px solid var(--clr-black);
+}
+
+.results-win {
+    color: var(--clr-win-green);
+}
+
+.results-lose {
+    color: var(--clr-lose-red);
+}
+
+.divider {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 600;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hand-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3.5rem;
+    gap: 1.25rem;
+    animation: retry-slide 250ms; 
+}
+
+.retry-container {
+    display: none;
+    justify-content: center;
+    margin-top: 3.5rem;
+    animation: retry-slide 250ms;
+}
+
+button {
+    width: 12.5rem;
+    height: 12.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid transparent;
+    background-color: var(--clr-primary);
+    border-radius: 1.25rem;
+    position: relative;
+    transition: 
+        box-shadow var(--animation-speed) ease-in,
+        border var(--animation-speed) ease-in,
+        transform 25ms ease-in;
+}
+
+button:hover {
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
+    border: 3px solid var(--clr-black);
+}
+
+button:active {
+    transform: translateX(-0.2rem) translateY(-0.2rem);
+}
+
+.svg {
+    max-width: 4rem;
+    transform: translateY(-1.25rem);
+    fill: var(--clr-white);
+    stroke: var(--clr-black);
+    stroke-width: 3;
+}
+
+.svg-2 {
+    max-width: 4.5rem;
+}
+
+.svg-3 {
+    max-width: 3.8rem;
+}
+
+.svg-4 {
+    max-width: 4.5rem;
+}
+
+.btn-text {
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    position: absolute;
+    bottom: 1.5rem;
+}
+
+
+/* Animations */
+@keyframes retry-slide {
+    from {
+        transform: translateY(3rem);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+/* Mobile */
+@media screen and (max-width: 700px) {
+    .score-container {
+        flex-direction: column;
+        gap: 0;
+    }
+    .player-score{
+        padding: 0 0 1.3rem 0;
+    }
+    .computer-score {
+        border-top: 2px solid var(--clr-black);
+        flex-direction: row;
+        padding: 1.3rem 0 0 0;
+    }
+    .divider {
+        display: none;
+    }
+    .results {
+        font-size: 1.5rem;
+    }
+    .hand-container{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .score-text{
+        font-size: 1.2rem;
+    }
+    .results {
+        font-size: 1.2rem;
+    }
+    button {
+        width: 8rem;
+        height: 8rem;
+    }
+    .svg {
+        max-width: 2.3rem;
+    }
+    .btn-text {
+        font-size: 1.1rem;
+        bottom: 0.9rem;
+    }
+}
